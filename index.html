@@ -19,7 +19,7 @@
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="#">
                 <img src="assets/images/logo_pack/icon-transparent.png" alt="Shaurya Logo" class="me-2 nav-logo">
-                <span class="fw-bold text-white">Shaurya Investments</span>
+                <span class="fw-bold text-white brand-text">Shaurya Investment</span>
             </a>
             <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarNav">
@@ -41,9 +41,9 @@
                             aria-labelledby="loginDropdown">
                             <li><a class="dropdown-item" target="_blank"
                                     href="https://www.njindiaonline.in/cdesk/login.fin"><i
-                                        class="bi bi-person me-2"></i>Client Desk Login</a></li>
-                            <li><a class="dropdown-item" target="_blank" href="http://p.njw.bz/49605"><i
-                                        class="bi bi-shield-lock me-2"></i>E-Wealth Login</a>
+                                        class="bi bi-person me-2"></i>Client Login</a></li>
+                            <li><a class="dropdown-item" target="_blank" href="https://ewa.njindiaonline.com/ewa/login"><i
+                                        class="bi bi-shield-lock me-2"></i>EWA Login</a>
                             </li>
                         </ul>
                     </li>
@@ -51,6 +51,7 @@
             </div>
         </div>
     </nav>
+
 
     <!-- Hero Section -->
     <section class="hero-section text-white d-flex align-items-center">
@@ -232,27 +233,30 @@
             <h2 class="text-center fw-bold mb-4">Get in Touch</h2>
             <div class="row">
                 <div class="col-md-6">
-                    <form>
+                    <form id="contact-form">
                         <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Your Name">
+                            <input type="text" id="name" class="form-control" placeholder="Your Name" required>
                         </div>
                         <div class="mb-3">
-                            <input type="email" class="form-control" placeholder="Your Email">
+                            <input type="email" id="email" class="form-control" placeholder="Your Email" required>
                         </div>
                         <div class="mb-3">
-                            <input type="tel" class="form-control" placeholder="Your Phone">
+                            <input type="tel" id="phone" class="form-control" placeholder="Your Phone" required>
                         </div>
                         <div class="mb-3">
-                            <textarea class="form-control" rows="4" placeholder="Your Message"></textarea>
+                            <textarea id="message" class="form-control" rows="4" placeholder="Your Message"
+                                required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Request Callback</button>
                     </form>
                 </div>
                 <div class="col-md-6 p-4 ps-5">
-                    <h4><i class="bi bi-whatsapp"></i> &nbsp+91 7045519479</h4>
-                    <h4><i class="bi bi-telephone"></i> &nbsp+91 9967589229</h4>
+                    <h4><i class="bi bi-whatsapp"></i> &nbsp <a href="https://wa.me/917045519479" target="_blank"
+                            style="text-decoration: none; color: white;">+91 7045519479</a></h4><br>
+                    <h4><i class="bi bi-telephone"></i> &nbsp <a href="tel:+919967589229"
+                            style="text-decoration: none; color: white;">+91 9967589229</a></h4><br>
                     <h4><i class="bi bi-envelope"></i> &nbsp<a href="mailto:investwithshaurya@gmail.com"
-                            style="text-decoration: none; color: white;">investwithshaurya@gmail.com</a></h4>
+                            style="text-decoration: none; color: white;">investwithshaurya@gmail.com</a></h4><br>
                     <h4><i class="bi bi-instagram"></i> &nbsp<a href="https://www.instagram.com/shauryainvestments/"
                             target="_blank" style="text-decoration: none; color: white;">@shauryainvestments</a></h4>
                 </div>
@@ -298,6 +302,21 @@
             }
         });
 
+        document.getElementById('contact-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            const whatsappMessage = `Hello, I would like to get in touch:\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`;
+
+            const whatsappNumber = '917045519479'; // Add country code for India
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+            window.open(whatsappURL, '_blank');
+        });
     </script>
 
 </body>
